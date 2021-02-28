@@ -6,7 +6,7 @@ import Weather from "./Weather";
 function App() {
   return (
     <div className="App">
-        <Weather />
+        <Weather defaultCity="Berlin"/>
       <footer>
         <a href="https://github.com/jmwajman/React-WeatherApp" class="footer">
           Open-source

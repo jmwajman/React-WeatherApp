@@ -1,23 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from "axios";
 import "./Weather.css";
+import Forecast from "./Forecast";
 
-export default function Weather() {
-  let weatherData = {
-    city: "Wroclaw",
-    temperature: 13,
-    day: "Monday",
-    time: "10:02",
-    description: "Rainy",
-    imgUrl: "https://www.flaticon.com/svg/static/icons/svg/606/606801.svg",
-    humidity: 90,
-    wind: 5,
-    pressure: 1010
-  };
 
-  return (
+export default function Weather(props) {
+ 
+  const[weatherData,setWeatherData] = useState({ready:false});
+  
+  function handleResponse(response){
+    setWeatherData({
+      ready: true,
+      temperature: response.data.main.temp,
+      humidity: response.data.main.humidity,
+      day: "Monday",
+      time: "10:02",
+      description: response.data.weather[0].description,
+      iconUrl:"http://openweathermap.org/img/wn/04n@2x.png",
+      wind: response.data.wind.speed,
+      city: response.data.name,
+      pressure: response.data.main.pressure,
+    })
+  }
+
+  if (weatherData.ready){
+    return (
     <div className="Weather">
       <div className="container-lg">
-        <h1>Do you need the umbrella?</h1>
+        <h1></h1>
         <div className="input-group">
           <input
             type="text"
@@ -43,109 +53,44 @@ export default function Weather() {
             My location
           </button>
         </div>
-
+        <h2>{weatherData.city}</h2>
         <div className="row justify-content-around">
           <div className="col-6">
-            <img
-              src="https://www.flaticon.com/svg/static/icons/svg/606/606801.svg"
-              id="icon"
-              width="60"
-              alt=" current weather"
-            />
+            
+            <span id="temperature">
+                <strong>{Math.round(weatherData.temperature)}°</strong>
+              </span>
+              <span id="celsfahr"><a href="/">C </a>| <a href="/">F</a></span>
+              
             <p>{weatherData.description}</p>
-            <h2>{weatherData.city}</h2>
-            <h3>
-              Last updated on {weatherData.day} at {weatherData.time}
-            </h3>
+            
+            
           </div>
           <div className="col-6" id="valueColumns">
-            <h5>
-              Temperature:{" "}
-              <span id="temperature">
-                <strong>{weatherData.temperature}</strong>
-              </span>
-              ° <a href="/">C </a>| <a href="/">F</a>
-            </h5>
             <h5>
               Humidity: <span>{weatherData.humidity}</span>%
             </h5>
             <h5>
-              Wind: <span>{weatherData.wind}</span> km/h
+              Wind: <span>{Math.round(weatherData.wind)}</span> km/h
             </h5>
             <h5>
               Pressure: <span>{weatherData.pressure}</span> hPa
             </h5>
           </div>
-          <br />
-          <div className="row justify-content-evenly" id="forecast">
-            <div className="col-2">
-              <h4>Monday</h4>
-              <img
-                src="https://www.flaticon.com/svg/static/icons/svg/606/606801.svg"
-                width="40"
-                class="picture"
-                alt="weather"
-              />
-              <h6>
-                {" "}
-                4° / <strong> 2°</strong>
-              </h6>
-            </div>
-            <div className="col-2">
-              <h4>Tuesday</h4>
-              <img
-                src="https://www.flaticon.com/svg/static/icons/svg/606/606795.svg"
-                width="40"
-                class="picture"
-                alt="weather"
-              />
-              <h6>
-                {" "}
-                3° / <strong> 2°</strong>
-              </h6>
-            </div>
-            <div className="col-2">
-              <h4>Wednesday</h4>
-              <img
-                src="https://www.flaticon.com/svg/static/icons/svg/606/606802.svg"
-                width="40"
-                class="picture"
-                alt="weather"
-              />
-              <h6>
-                {" "}
-                4° / <strong> 0°</strong>
-              </h6>
-            </div>
-            <div className="col-2">
-              <h4>Thursday</h4>
-              <img
-                src="https://www.flaticon.com/svg/static/icons/svg/606/606799.svg"
-                width="40"
-                class="picture"
-                alt="weather"
-              />
-              <h6>
-                {" "}
-                2° / <strong> 1°</strong>
-              </h6>
-            </div>
-            <div className="col-2">
-              <h4>Friday</h4>
-              <img
-                src="https://www.flaticon.com/svg/static/icons/svg/606/606799.svg"
-                width="40"
-                class="picture"
-                alt="weather"
-              />
-              <h6>
-                {" "}
-                2° / <strong> -1°</strong>
-              </h6>
-            </div>
-          </div>
+          <h3>
+              Last updated on {weatherData.day} at {weatherData.time}
+            </h3>
+          <Forecast />
         </div>
       </div>
     </div>
   );
+} else {
+  const apiKey="48ddae8355adb729eaa13fbeedf0ff54";
+  let apiUrl=`http://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
+    
+  axios.get(apiUrl).then(handleResponse);
+
+  return "Loading...";
+}
 }

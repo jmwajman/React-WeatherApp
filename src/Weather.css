@@ -7,67 +7,50 @@ form {
 p {
   display: block;
   font-size: 15px;
-  font-weight: 900;
-  margin: 0, auto;
-  padding-bottom: -23px;
-  padding-top: -10px;
+  font-weight: 400;
+  margin: -10px auto 0;
   text-transform: capitalize;
 }
 
 h2 {
-  padding-top: 9px;
-  padding-bottom: 12px;
-  font-weight: 900;
+  margin: 50px auto 5px;
+  font-weight: 500;
   text-align: center;
   text-shadow: 2px 2px 2px rgba(100, 136, 155, 0.562);
   line-height: 22px;
-  font-size: 36px;
+  font-size: 50px;
+  letter-spacing: 3.5px;
 }
 
 h3 {
-  font-weight: 900;
+  font-weight: 500;
   font-size: 14px;
-  margin: 0 auto;
+  margin: 70px auto 0;
   text-align: center;
-}
-
-h4 {
-  font-family: "Quicksand", sans-serif;
-  font-weight: 600;
-  text-align: center;
-  margin-top: 0;
-  font-size: 17px;
-  margin-bottom: 10px;
 }
 
 img {
-  display: block;
+  display: inline;
   margin: 15px auto 10px;
 }
 
 h5 {
-  font-family: "Quicksand", sans-serif;
   text-align: left;
-  font-size: 25px;
-  font-weight: 600;
-  margin-left: -60px;
-}
-h6 {
-  font-family: "Quicksand", sans-serif;
-  font-weight: 500;
   font-size: 20px;
-  text-align: center;
-  margin-bottom: -3px;
+  font-weight: 500;
+  margin-left: -30px;
 }
 
 a {
   text-decoration: none;
   color: rgb(104, 100, 100);
 }
-
+#temperature {
+  font-size: 100px;
+  font-weight: 100;
+}
 .h1 {
-  font-family: "Quicksand", sans-serif;
-  font-weight: 900;
+  font-weight: 500;
   font-size: 45px;
   color: black;
   display: block;
@@ -75,28 +58,23 @@ a {
   text-align: center;
 }
 .col-6 img {
-  margin: 55px auto 15px;
+  margin: -50px auto 15px;
+  display: inline-block;
 }
 
 .col-6 {
-  padding-left: 95px;
-}
-
-.col-2 {
-  font-family: "Quicksand", sans-serif;
-  font-weight: 600;
-  text-align: center;
-  margin-top: 50px;
+  padding-left: 90px;
+  padding-right: 50px;
 }
 
 .container-lg {
-  width: 80%;
+  width: 60%;
   height: 550px;
   border: none;
   border-radius: 18px;
   margin-top: 45px;
   padding-top: 31px;
-  background: rgba(187, 210, 212, 0.7);
+  background-image: linear-gradient(45deg, #7586ad 0%, #bec2c0 100%);
   text-align: center;
 }
 
@@ -104,7 +82,6 @@ a {
   width: 70%;
   opacity: 0.8;
   margin: 22px auto -2px;
-  font-family: "Quicksand", sans-serif;
 }
 
 .active {
@@ -113,5 +90,10 @@ a {
 }
 
 #valueColumns {
-  margin-top: 60px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#celsfahr {
+  font-size: 30px;
 }
