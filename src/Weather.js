@@ -27,7 +27,6 @@ export default function Weather(props) {
     return (
     <div className="Weather">
       <div className="container-lg">
-        
         <div className="input-group">
           <input
             type="text"

@@ -3,10 +3,10 @@ import './App.css';
 import Weather from "./Weather";
 
   
-function App() {
+export default function App() {
   return (
     <div className="App">
-        <Weather defaultCity="Berlin"/>
+        <Weather defaultCity="Wroclaw"/>
       <footer>
         <a href="https://github.com/jmwajman/React-WeatherApp" class="footer">
           Open-source
@@ -17,4 +17,4 @@ function App() {
   );
 }
 
-export default App;
+
