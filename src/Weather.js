@@ -63,7 +63,6 @@ export default function Weather(props) {
               
             <p>{weatherData.description}</p>
             
-            
           </div>
           <div className="col-6" id="valueColumns">
             <h5>
