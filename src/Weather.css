@@ -19,13 +19,13 @@ h2 {
   text-shadow: 2px 2px 2px rgba(100, 136, 155, 0.562);
   line-height: 22px;
   font-size: 50px;
-  letter-spacing: 3.5px;
+  letter-spacing: 4.1px;
 }
 
 h3 {
   font-weight: 500;
-  font-size: 14px;
-  margin: 70px auto 0;
+  font-size: 17px;
+  margin: 70px auto -10px;
   text-align: center;
 }
 
@@ -46,7 +46,7 @@ a {
   color: rgb(104, 100, 100);
 }
 #temperature {
-  font-size: 100px;
+  font-size: 90px;
   font-weight: 100;
 }
 .h1 {
@@ -57,14 +57,10 @@ a {
   padding-bottom: 27px;
   text-align: center;
 }
-.col-6 img {
-  margin: -50px auto 15px;
-  display: inline-block;
-}
 
 .col-6 {
-  padding-left: 90px;
-  padding-right: 50px;
+  padding-left: 60px;
+  padding-right: -30px;
 }
 
 .container-lg {
@@ -74,26 +70,22 @@ a {
   border-radius: 18px;
   margin-top: 45px;
   padding-top: 31px;
-  background-image: linear-gradient(45deg, #499699be 0%, #9fb1ae 100%);
+  background-image: linear-gradient(160deg, #37b0ced3 0%, #7bc9b8 90%);
   text-align: center;
 }
 
 .input-group {
   width: 70%;
-  opacity: 0.8;
+  opacity: 0.9;
   margin: 22px auto -2px;
-}
-
-.active {
-  text-decoration: none;
-  color: black;
 }
 
 #valueColumns {
   margin-top: 50px;
   margin-bottom: 50px;
+  padding-right: 20px;
 }
 
 #celsfahr {
-  font-size: 30px;
+  font-size: 27px;
 }

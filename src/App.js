@@ -6,7 +6,7 @@ import Weather from "./Weather";
 export default function App() {
   return (
     <div className="App">
-        <Weather defaultCity="Wroclaw"/>
+        <Weather defaultCity="Berlin"/>
       <footer>
         <a href="https://github.com/jmwajman/React-WeatherApp" class="footer">
           Open-source
