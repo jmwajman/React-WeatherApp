@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from "axios";
 import "./Weather.css";
-
+import WeatherForecast from "./WeatherForecast";
 import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props) {
@@ -16,14 +16,18 @@ export default function Weather(props) {
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt*1000),
       description: response.data.weather[0].description,
-      iconUrl:"http://openweathermap.org/img/wn/04n@2x.png",
+      iconUrl:`https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`,
       wind: response.data.wind.speed,
       city: response.data.name,
       pressure: response.data.main.pressure,
     })
   }
 
-
+function search(){
+  const apiKey="48ddae8355adb729eaa13fbeedf0ff54";
+  let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(handleResponse);
+}
 
 function handleSubmit(event){
   event.preventDefault();
@@ -34,11 +38,7 @@ function handleCityChange(event){
 setCity(event.target.value);
 }
 
-function search(){
-  const apiKey="48ddae8355adb729eaa13fbeedf0ff54";
-  let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(handleResponse);
-}
+
   if (weatherData.ready){
     return (
     <div className="Weather">
@@ -46,10 +46,11 @@ function search(){
           <form className="input-group"
           onSubmit={handleSubmit}>
           <input
-            type="text"
-            class="form-control"
+            type="search"
+            className="form-control"
             placeholder="Type the location..."
             id="search-input"
+
             aria-label="Recipient's username with two button addons"
             onChange ={handleCityChange}
           />
@@ -57,6 +58,8 @@ function search(){
             className="btn btn-outline-secondary"
             type="button"
             id="look-for-place"
+            value="Search"
+            type="submit"
           >
             <span role="img" aria-label="magnifying glass">
               🔍
@@ -69,10 +72,9 @@ function search(){
           >
             My location
           </button>
-        
-        
         </form>
         <WeatherInfo data={weatherData}/>
+        <WeatherForecast city={weatherData.city}/>
       </div>
     </div>
   );

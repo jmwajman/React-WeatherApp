@@ -1,4 +1,5 @@
 import React from "react";
+import "./FormattedDate.css";
 
 export default function FormattedDate(props){
     let days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -15,7 +16,7 @@ export default function FormattedDate(props){
     }
 
 return (
-    <div>
+    <div className="Sentence">
         Last updated on {day}{" "}at{" "}{hours}:{minutes}
     </div>
 )

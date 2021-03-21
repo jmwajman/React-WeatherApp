@@ -1,6 +1,8 @@
 import React from "react";
-import Forecast from "./Forecast";
+import Forecast from "./WeatherForecast";
 import FormattedDate from "./FormattedDate";
+import "./WeatherInfo.css";
+import WeatherTemp from "./WeatherTemp";
 
 export default function WeatherInfo(props) {
    return ( 
@@ -8,16 +10,13 @@ export default function WeatherInfo(props) {
    <h2>{props.data.city}</h2>
         <div className="row justify-content-around">
           <div className="col-6">
-            
-            <span id="temperature">
-                <strong>{Math.round(props.data.temperature)}°</strong>
-              </span>
-              <span id="celsfahr"><a href="/">C </a>| <a href="/">F</a></span>
+            <WeatherTemp celsius= {props.data.temperature}/>
               
-            <p>{props.data.description}</p>
+            <p><img src ={props.data.iconUrl} width="57"/> {props.data.description}</p>
             
           </div>
           <div className="col-6" id="valueColumns">
+            
             <h5>
               Humidity: <span>{props.data.humidity}</span>%
             </h5>
@@ -31,7 +30,7 @@ export default function WeatherInfo(props) {
           <h3>
               <FormattedDate date ={props.data.date}/>
             </h3>
-          <Forecast />
+          
         </div>
         </div>
 )
