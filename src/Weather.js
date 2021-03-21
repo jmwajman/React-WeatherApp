@@ -56,7 +56,7 @@ setCity(event.target.value);
           />
           <button
             className="btn btn-outline-secondary"
-            type="button"
+            
             id="look-for-place"
             value="Search"
             type="submit"
