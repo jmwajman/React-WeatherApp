@@ -65,13 +65,6 @@ setCity(event.target.value);
               🔍
             </span>
           </button>
-          <button
-            className="btn btn-outline-secondary"
-            type="button"
-            id="location"
-          >
-            My location
-          </button>
         </form>
         <WeatherInfo data={weatherData}/>
         <WeatherForecast city={weatherData.city}/>
